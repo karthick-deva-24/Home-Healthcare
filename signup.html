@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - Thatha</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg-light);
+    }
+    .split-layout {
+      display: flex;
+      min-height: 100vh;
+    }
+    .split-left {
+      flex: 1.2;
+      background: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80') center/cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 60px;
+      color: var(--white);
+      text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+    }
+    .logo-box a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--white);
+      font-size: 32px;
+      font-weight: 700;
+      font-family: var(--font-heading);
+    }
+    .logo-box i {
+      color: var(--accent-color);
+    }
+    .hero-text h1 {
+      color: var(--white);
+      font-size: 54px;
+      margin-bottom: 20px;
+      line-height: 1.1;
+    }
+    .hero-text p {
+      font-size: 20px;
+      max-width: 500px;
+      opacity: 0.9;
+      line-height: 1.6;
+    }
+    .split-right {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-light);
+      padding: 40px 20px;
+      position: relative;
+    }
+    .auth-box {
+      background: var(--white);
+      max-width: 480px;
+      width: 100%;
+      border-radius: 24px;
+      padding: 50px;
+      box-shadow: 0 25px 50px rgba(11, 86, 109, 0.08);
+      text-align: center;
+    }
+    .auth-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 30px;
+      text-align: left;
+    }
+    .auth-input-group {
+      position: relative;
+    }
+    .auth-input {
+      width: 100%;
+      padding: 16px 45px 16px 16px;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      outline: none;
+      font-size: 15px;
+      font-family: var(--font-body);
+      transition: var(--transition);
+      background: #fbfdfe;
+    }
+    .auth-input:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 15px rgba(11, 86, 109, 0.08);
+      background: var(--white);
+    }
+    .eye-toggle {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #9cb1b8;
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 16px;
+    }
+    .eye-toggle:hover {
+      color: var(--primary-color);
+    }
+    .role-selector {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 5px;
+      background: #f2f7f9;
+      padding: 6px;
+      border-radius: 14px;
+    }
+    .role-label {
+      flex: 1;
+      padding: 10px;
+      text-align: center;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: var(--transition);
+      font-weight: 600;
+      color: var(--text-light);
+      font-size: 14px;
+    }
+    .role-selector input[type="radio"] {
+      display: none;
+    }
+    .role-selector input[type="radio"]:checked + .role-label {
+      background: var(--white);
+      color: var(--primary-color);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+    .auth-links {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      color: var(--text-light);
+      margin-top: 5px;
+    }
+    .auth-links a {
+      color: var(--primary-color);
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    .auth-links a:hover {
+      text-decoration: underline;
+    }
+    .auth-switch {
+      margin-top: 20px;
+      font-size: 15px;
+      color: var(--text-light);
+      text-align: center;
+    }
+    .auth-switch a {
+      color: var(--primary-color);
+      font-weight: 700;
+      transition: var(--transition);
+    }
+    .auth-switch a:hover {
+      text-decoration: underline;
+    }
+    .back-btn { display: inline-flex; justify-content: center; align-items: center; gap: 8px; margin: 0 auto 20px auto; color: var(--text-dark); background: var(--white); font-size: 14px; font-weight: 600; padding: 8px 25px; border-radius: 50px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); text-decoration: none; transition: var(--transition); border: 1px solid var(--border-color); position: relative; }
+    .back-btn:hover { color: var(--primary-color); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
+    @media (max-width: 992px) {
+      .split-left { display: none; }
+      .split-right { background: linear-gradient(135deg, #f6fcff 0%, #e2eff3 100%); }
+    }
+    @media (max-width: 768px) {
+      .auth-box { padding: 40px 25px; }
+      .back-btn { margin: 0 auto 20px auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="split-layout">
+    <!-- Left Side Cover -->
+    <div class="split-left" data-aos="fade-right" data-aos-duration="1000">
+      <div class="logo-box"><a href="index.html"><img src="assets/images/logo_0205.webp" alt="Thatha" style="height: 50px;"></a></div>
+      <div class="hero-text">
+        <h1>Join the Thatha Family.</h1>
+        <p>Create an account to simplify scheduling, get 24/7 support, and ensure the absolute best care for your loved ones.</p>
+      </div>
+      <div>
+        <p style="font-size: 14px; opacity: 0.7;">&copy; 2026 Thatha Home Care. All rights reserved.</p>
+      </div>
+    </div>
+
+    <!-- Right Side Form -->
+    <div class="split-right">
+      <div class="auth-box" data-aos="zoom-in" data-aos-duration="800" style="position: relative;">
+        <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Home</a>
+        <h2 style="font-size: 32px; color: var(--primary-color); margin-bottom: 5px;">Create Account</h2>
+        <p style="color: var(--text-light); margin-bottom: 25px;">Get started with our premium care services</p>
+        
+        <form class="auth-form" onsubmit="handleSignup(event)">
+          <!-- Role Selector -->
+          <div>
+            <div class="role-selector">
+              <input type="radio" id="reg-role-user" name="role" value="user" checked>
+              <label for="reg-role-user" class="role-label">Patient / Family</label>
+              <input type="radio" id="reg-role-admin" name="role" value="admin">
+              <label for="reg-role-admin" class="role-label">Administrator</label>
+            </div>
+          </div>
+
+          <div class="auth-input-group">
+            <input type="text" class="auth-input" placeholder="Full Name" required>
+          </div>
+
+          <div class="auth-input-group">
+            <input type="email" class="auth-input" placeholder="Email Address" required>
+          </div>
+          
+          <div class="auth-input-group">
+            <input type="password" class="auth-input" id="signup-password" placeholder="Password" required>
+            <i class="fa-solid fa-eye eye-toggle" onclick="togglePassword('signup-password', this)"></i>
+          </div>
+
+          <div class="auth-input-group">
+            <input type="password" class="auth-input" id="signup-confirm-password" placeholder="Confirm Password" required>
+            <i class="fa-solid fa-eye eye-toggle" onclick="togglePassword('signup-confirm-password', this)"></i>
+          </div>
+
+          <div class="auth-links">
+            <label style="cursor: pointer; display: flex; align-items: flex-start; gap: 8px;">
+              <input type="checkbox" required style="margin-top: 4px;"> 
+              <span>I accept the <a href="404.html">Privacy Policy</a> & <a href="404.html">Terms</a></span>
+            </label>
+          </div>
+          
+          <button type="submit" class="btn btn-primary" style="width: 100%; border-radius: 12px; padding: 16px; font-size: 16px; margin-top: 5px; box-shadow: 0 10px 20px rgba(11, 86, 109, 0.15);">Register Account</button>
+          
+          <div class="auth-switch">
+            Already have an account? <a href="login.html">Login</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="js/script.js"></script>
+  <script>
+    function togglePassword(inputId, icon) {
+      const input = document.getElementById(inputId);
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+      } else {
+        input.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+      }
+    }
+
+    function handleSignup(e) {
+      e.preventDefault();
+      const role = document.querySelector('input[name="role"]:checked').value;
+      const nameInput = document.querySelector('input[type="text"]');
+      const emailInput = document.querySelector('input[type="email"]');
+      
+      const email = emailInput ? emailInput.value : '';
+      const name = nameInput && nameInput.value ? nameInput.value : (email ? email.split('@')[0] : 'User');
+
+      localStorage.setItem('auth_email', email);
+      localStorage.setItem('auth_role', role);
+      localStorage.setItem('auth_name', name);
+      window.location.href = 'login.html';
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Thatha</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: var(--bg-light);
+      margin: 0;
+      font-family: var(--font-body);
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+    
+    /* Sidebar */
+    .sidebar {
+      width: 280px;
+      background: var(--white);
+      box-shadow: 2px 0 20px rgba(11, 86, 109, 0.05);
+      display: flex;
+      flex-direction: column;
+      z-index: 10;
+      transition: var(--transition);
+    }
+    .sidebar-header {
+      padding: 30px 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary-color);
+      font-family: var(--font-heading);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .sidebar-menu {
+      padding: 20px 0;
+      flex: 1;
+      overflow-y: auto;
+    }
+    .menu-item {
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      color: var(--text-light);
+      font-weight: 500;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    .menu-item i {
+      font-size: 18px;
+      width: 24px;
+      text-align: center;
+    }
+    .menu-item:hover, .menu-item.active {
+      background: var(--bg-light);
+      color: var(--primary-color);
+      border-right: 4px solid var(--primary-color);
+    }
+    .sidebar-footer {
+      padding: 20px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    /* Main Content */
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    
+    /* Top Header */
+    .dashboard-header {
+      background: var(--white);
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.02);
+      z-index: 5;
+    }
+    .search-bar {
+      display: flex;
+      align-items: center;
+      background: var(--bg-light);
+      padding: 10px 20px;
+      border-radius: 50px;
+      width: 300px;
+    }
+    .search-bar input {
+      border: none;
+      background: transparent;
+      outline: none;
+      width: 100%;
+      margin-left: 10px;
+      font-family: var(--font-body);
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .action-icon {
+      font-size: 20px;
+      color: var(--text-light);
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+    }
+    .action-icon:hover {
+      color: var(--primary-color);
+    }
+    .notification-badge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background: var(--accent-color);
+      color: white;
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 50px;
+      font-weight: bold;
+    }
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+    }
+    .user-profile img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    
+    /* Dashboard Area */
+    .dashboard-body {
+      padding: 40px;
+      overflow-y: auto;
+      flex: 1;
+    }
+    .page-title {
+      font-size: 28px;
+      margin-bottom: 30px;
+      color: var(--secondary-color);
+    }
+    
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
+      margin-bottom: 40px;
+    }
+    .stat-card {
+      background: var(--white);
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(11, 86, 109, 0.05);
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      transition: var(--transition);
+    }
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(11, 86, 109, 0.1);
+    }
+    .stat-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+    .stat-blue { background: #e2eff3; color: var(--primary-color); }
+    .stat-orange { background: #fff4e5; color: var(--accent-color); }
+    .stat-green { background: #e5f5e9; color: #2ecc71; }
+    .stat-purple { background: #f3e5f5; color: #9b59b6; }
+    
+    .stat-info h4 {
+      margin: 0 0 5px 0;
+      color: var(--text-light);
+      font-size: 14px;
+      font-weight: 500;
+      font-family: var(--font-body);
+    }
+    .stat-info h2 {
+      margin: 0;
+      color: var(--secondary-color);
+      font-size: 28px;
+      font-family: var(--font-body);
+    }
+    
+    /* Tables Area */
+    .table-container {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(11, 86, 109, 0.05);
+    }
+    .table-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+    .table-header h3 {
+      margin: 0;
+      font-size: 20px;
+      color: var(--secondary-color);
+      font-family: var(--font-body);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th {
+      text-align: left;
+      padding: 15px;
+      color: var(--text-light);
+      font-weight: 500;
+      border-bottom: 2px solid var(--border-color);
+    }
+    td {
+      padding: 20px 15px;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--secondary-color);
+      vertical-align: middle;
+    }
+    .status-badge {
+      padding: 6px 12px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .status-confirmed { background: #e5f5e9; color: #2ecc71; }
+    .status-pending { background: #fff4e5; color: var(--accent-color); }
+    
+    .action-btn {
+      background: none;
+      border: none;
+      color: var(--text-light);
+      cursor: pointer;
+      font-size: 16px;
+      margin-right: 10px;
+      transition: var(--transition);
+    }
+    .action-btn:hover {
+      color: var(--primary-color);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .sidebar { position: fixed; left: -100vw; top: 0; width: 100vw; height: 100vh; z-index: 1000; }
+      .sidebar.open { left: 0; }
+      .sidebar-close-btn { display: block !important; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .dashboard-body { padding: 20px; }
+      .search-bar { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-header" style="justify-content: space-between;">
+      <img src="assets/images/logo_0205.webp" alt="Thatha Logo" style="height: 40px; display: block;">
+      <i class="fa-solid fa-times sidebar-close-btn" style="color:var(--text-light); cursor:pointer; font-size:26px; display:none;"></i>
+    </div>
+    <div class="sidebar-menu">
+      <div class="menu-item active" data-target="overview"><i class="fa-solid fa-chart-pie"></i> Overview</div>
+      <div class="menu-item" data-target="appointments"><i class="fa-solid fa-calendar-check"></i> Appointments</div>
+      <div class="menu-item" data-target="patients"><i class="fa-solid fa-hospital-user"></i> Patients</div>
+      <div class="menu-item" data-target="caregivers"><i class="fa-solid fa-user-nurse"></i> Caregivers</div>
+      <div class="menu-item" data-target="billing"><i class="fa-solid fa-file-invoice-dollar"></i> Billing</div>
+      <div class="menu-item" data-target="settings"><i class="fa-solid fa-gear"></i> Settings</div>
+    </div>
+    <div class="sidebar-footer">
+      <a href="login.html" class="menu-item" style="padding: 10px; color: #e74c3c;">
+        <i class="fa-solid fa-door-open"></i> Logout
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    
+    <!-- Top Header -->
+    <div class="dashboard-header">
+      
+      <div class="user-profile" style="flex: 1;">
+        <div class="profile-avatar" style="width: 45px; height: 45px; border-radius: 50%; background: #e5f5e9; color: #2ecc71; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: bold; font-family: var(--font-heading);">A</div>
+        <div style="display: flex; flex-direction: column; align-items: flex-start;">
+          <h5 style="margin: 0; font-family: var(--font-body); color: var(--secondary-color); font-size: 16px;">Admin Manager</h5>
+          <small style="color: var(--text-light); font-size: 12px; margin-bottom: 2px;">admin@thathacare.com</small>
+          <small style="background: #e5f5e9; color: #2ecc71; font-size: 10px; padding: 2px 8px; border-radius: 50px; font-weight: bold;">System Admin</small>
+        </div>
+      </div>
+
+      <div class="header-actions" style="display: flex; align-items: center; gap: 15px;">
+        <div class="search-bar" style="margin-right: 15px;">
+          <i class="fa-solid fa-magnifying-glass" style="color:var(--text-light);"></i>
+          <input type="text" placeholder="Search...">
+        </div>
+        
+        <div class="dashboard-menu-btn" style="display:none; cursor:pointer; color:var(--primary-color);">
+          <i class="fa-solid fa-bars" style="font-size:24px;"></i>
+        </div>
+      </div>
+    </div>
+    <!-- Dashboard Body -->
+    <div class="dashboard-body tab-pane active" id="overview">
+      <h1 class="page-title">Dashboard Overview</h1>
+      
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon stat-blue"><i class="fa-solid fa-users"></i></div>
+          <div class="stat-info">
+            <h4>Total Patients</h4>
+            <h2>1,248</h2>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon stat-orange"><i class="fa-solid fa-user-nurse"></i></div>
+          <div class="stat-info">
+            <h4>Active Caregivers</h4>
+            <h2>156</h2>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon stat-green"><i class="fa-solid fa-calendar-day"></i></div>
+          <div class="stat-info">
+            <h4>Today's Appointments</h4>
+            <h2>42</h2>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon stat-purple"><i class="fa-solid fa-sack-dollar"></i></div>
+          <div class="stat-info">
+            <h4>Monthly Revenue</h4>
+            <h2>$84,500</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <div class="table-header">
+          <h3>Recent Appointments</h3>
+          <button class="btn btn-primary" style="padding: 10px 20px; font-size: 14px;">View All</button>
+        </div>
+        <div style="overflow-x: auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>Patient Name</th>
+                <th>Caregiver</th>
+                <th>Service</th>
+                <th>Date & Time</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Arthur Morgan</strong><br><small style="color: var(--text-light);">#PAT-091</small></td>
+                <td>Emily Chen</td>
+                <td>Mobility Support</td>
+                <td>Oct 24, 2026<br><small style="color: var(--text-light);">10:00 AM</small></td>
+                <td><span class="status-badge status-confirmed">Confirmed</span></td>
+                <td>
+                  <button class="action-btn"><i class="fa-regular fa-eye"></i></button>
+                  <button class="action-btn"><i class="fa-solid fa-pen-to-square"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Sarah Williams</strong><br><small style="color: var(--text-light);">#PAT-088</small></td>
+                <td>James Wilson</td>
+                <td>Nursing Care</td>
+                <td>Oct 24, 2026<br><small style="color: var(--text-light);">02:30 PM</small></td>
+                <td><span class="status-badge status-pending">Pending</span></td>
+                <td>
+                  <button class="action-btn"><i class="fa-regular fa-eye"></i></button>
+                  <button class="action-btn"><i class="fa-solid fa-pen-to-square"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>James Peterson</strong><br><small style="color: var(--text-light);">#PAT-054</small></td>
+                <td>Mark Davis</td>
+                <td>Memory Care</td>
+                <td>Oct 25, 2026<br><small style="color: var(--text-light);">09:00 AM</small></td>
+                <td><span class="status-badge status-confirmed">Confirmed</span></td>
+                <td>
+                  <button class="action-btn"><i class="fa-regular fa-eye"></i></button>
+                  <button class="action-btn"><i class="fa-solid fa-pen-to-square"></i></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+    </div>
+
+    <!-- Other Tabs (Populated) -->
+    <div class="dashboard-body tab-pane" id="appointments" style="display: none;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+        <h1 class="page-title" style="margin: 0;">Appointments Management</h1>
+        <button class="btn btn-primary" style="font-size: 14px; padding: 10px 20px;"><i class="fa-solid fa-plus"></i> New Appointment</button>
+      </div>
+      
+      <div class="table-container">
+        <div class="table-header">
+          <div class="search-bar" style="border: 1px solid var(--border-color); background: var(--white); width: 100%; max-width: 400px; padding: 12px 20px;">
+            <i class="fa-solid fa-magnifying-glass" style="color:var(--text-light);"></i>
+            <input type="text" placeholder="Search by patient name, caregiver, or ID...">
+          </div>
+          <div style="display: flex; gap: 10px;">
+            <select style="padding: 10px 15px; width: auto; font-size: 14px; border-radius: 8px; border: 1px solid var(--border-color); outline: none; font-family: var(--font-body); color: var(--text-light);">
+              <option>All Status</option>
+              <option>Confirmed</option>
+              <option>Pending</option>
+              <option>Completed</option>
+            </select>
+          </div>
+        </div>
+        <div style="overflow-x: auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>Patient Name</th>
+                <th>Caregiver</th>
+                <th>Service Type</th>
+                <th>Schedule</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Arthur Morgan</strong><br><small style="color: var(--text-light);">#PAT-091</small></td>
+                <td>Emily Chen</td>
+                <td>Mobility Support</td>
+                <td>Oct 24, 2026<br><small style="color: var(--text-light);">10:00 AM</small></td>
+                <td><span class="status-badge status-confirmed">Confirmed</span></td>
+                <td>
+                  <button class="action-btn"><i class="fa-regular fa-eye"></i></button>
+                  <button class="action-btn"><i class="fa-solid fa-pen-to-square"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Sarah Williams</strong><br><small style="color: var(--text-light);">#PAT-088</small></td>
+                <td>James Wilson</td>
+                <td>Nursing Care</td>
+                <td>Oct 24, 2026<br><small style="color: var(--text-light);">02:30 PM</small></td>
+                <td><span class="status-badge status-pending">Pending</span></td>
+                <td>
+                  <button class="action-btn"><i class="fa-regular fa-eye"></i></button>
+                  <button class="action-btn"><i class="fa-solid fa-pen-to-square"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>James Peterson</strong><br><small style="color: var(--text-light);">#PAT-054</small></td>
+                <td>Mark Davis</td>
+                <td>Memory Care</td>
+                <td>Oct 25, 2026<br><small style="color: var(--text-light);">09:00 AM</small></td>
+                <td><span class="status-badge status-confirmed">Confirmed</span></td>
+                <td>
+                  <button class="action-btn"><i class="fa-regular fa-eye"></i></button>
+                  <button class="action-btn"><i class="fa-solid fa-pen-to-square"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Eleanor Rigby</strong><br><small style="color: var(--text-light);">#PAT-042</small></td>
+                <td>Dr. Sarah Jenkins</td>
+                <td>Consultation</td>
+                <td>Oct 26, 2026<br><small style="color: var(--text-light);">11:15 AM</small></td>
+                <td><span class="status-badge" style="background:var(--bg-light); color:var(--text-light);">Completed</span></td>
+                <td>
+                  <button class="action-btn"><i class="fa-regular fa-eye"></i></button>
+                  <button class="action-btn"><i class="fa-solid fa-file-waveform"></i></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    
+    <div class="dashboard-body tab-pane" id="patients" style="display: none;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+        <h1 class="page-title" style="margin: 0;">Patients Directory</h1>
+        <button class="btn btn-primary" style="font-size: 14px; padding: 10px 20px;"><i class="fa-solid fa-user-plus"></i> Add Patient</button>
+      </div>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Patient Info</th>
+              <th>Age</th>
+              <th>Condition</th>
+              <th>Assigned Caregiver</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><div style="display:flex; align-items:center; gap:12px;"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=40&q=40&fm=webp" style="width:40px;height:40px;border-radius:50%;object-fit:cover;"> <div><strong style="color:var(--secondary-color);">Arthur Morgan</strong><br><small style="color: var(--text-light);">#PAT-091</small></div></div></td>
+              <td>72</td>
+              <td>Arthritis</td>
+              <td>Emily Chen</td>
+              <td><span class="status-badge status-confirmed">Active</span></td>
+              <td><button class="action-btn"><i class="fa-regular fa-folder-open"></i></button></td>
+            </tr>
+            <tr>
+              <td><div style="display:flex; align-items:center; gap:12px;"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=40&q=40&fm=webp" style="width:40px;height:40px;border-radius:50%;object-fit:cover;"> <div><strong style="color:var(--secondary-color);">Sarah Williams</strong><br><small style="color: var(--text-light);">#PAT-088</small></div></div></td>
+              <td>81</td>
+              <td>Post-Surgery</td>
+              <td>James Wilson</td>
+              <td><span class="status-badge status-confirmed">Active</span></td>
+              <td><button class="action-btn"><i class="fa-regular fa-folder-open"></i></button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="dashboard-body tab-pane" id="caregivers" style="display: none;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+        <h1 class="page-title" style="margin: 0;">Caregivers Roster</h1>
+        <button class="btn btn-primary" style="font-size: 14px; padding: 10px 20px;"><i class="fa-solid fa-plus"></i> Add Staff</button>
+      </div>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Staff Profile</th>
+              <th>Role / Specialty</th>
+              <th>Experience</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><div style="display:flex; align-items:center; gap:12px;"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=40&q=40&fm=webp" style="width:40px;height:40px;border-radius:50%;object-fit:cover;"> <div><strong style="color:var(--secondary-color);">Emily Chen</strong><br><small style="color: var(--text-light);">#STF-102</small></div></div></td>
+              <td>Physical Therapist</td>
+              <td>8 Years</td>
+              <td><span class="status-badge status-confirmed">Available</span></td>
+              <td><button class="action-btn"><i class="fa-regular fa-folder-open"></i></button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="dashboard-body tab-pane" id="billing" style="display: none;">
+      <h1 class="page-title">Billing & Invoices</h1>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Invoice ID</th>
+              <th>Billed To</th>
+              <th>Amount</th>
+              <th>Date Issued</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong style="color:var(--secondary-color);">#INV-2026-081</strong></td>
+              <td>Arthur Morgan (Family)</td>
+              <td>$450.00</td>
+              <td>Oct 20, 2026</td>
+              <td><span class="status-badge status-pending">Unpaid</span></td>
+              <td>
+                <button class="action-btn"><i class="fa-solid fa-download"></i></button>
+                <button class="action-btn"><i class="fa-solid fa-envelope"></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td><strong style="color:var(--secondary-color);">#INV-2026-079</strong></td>
+              <td>Eleanor Rigby</td>
+              <td>$120.00</td>
+              <td>Oct 15, 2026</td>
+              <td><span class="status-badge status-confirmed">Paid</span></td>
+              <td>
+                <button class="action-btn"><i class="fa-solid fa-download"></i></button>
+                <button class="action-btn"><i class="fa-solid fa-envelope"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="dashboard-body tab-pane" id="settings" style="display: none;">
+      <h1 class="page-title">System Settings</h1>
+      <div class="table-container" style="max-width: 600px;">
+        <h3 style="margin-top: 0; margin-bottom: 25px; color: var(--secondary-color); font-family: var(--font-body);">Profile Settings</h3>
+        <form style="display: grid; gap: 20px;">
+          <div>
+            <label style="color:var(--text-light); font-size:14px; display:block; margin-bottom:8px;">Full Name</label>
+            <input type="text" value="Dr. Sarah Jenkins" style="width: 100%; padding: 12px 15px; border: 1px solid var(--border-color); border-radius: 8px; outline: none; font-family: var(--font-body);">
+          </div>
+          <div>
+            <label style="color:var(--text-light); font-size:14px; display:block; margin-bottom:8px;">Email Address</label>
+            <input type="email" value="admin@thathacare.com" style="width: 100%; padding: 12px 15px; border: 1px solid var(--border-color); border-radius: 8px; outline: none; font-family: var(--font-body);">
+          </div>
+          <div>
+            <label style="color:var(--text-light); font-size:14px; display:block; margin-bottom:8px;">Password</label>
+            <input type="password" value="********" style="width: 100%; padding: 12px 15px; border: 1px solid var(--border-color); border-radius: 8px; outline: none; font-family: var(--font-body);">
+          </div>
+          <div style="margin-top: 5px;">
+            <label style="display:flex; align-items:center; gap:10px; cursor:pointer; color:var(--secondary-color); font-weight:500;">
+              <input type="checkbox" checked style="width: 18px; height: 18px; accent-color: var(--primary-color);"> Enable Email Notifications
+            </label>
+          </div>
+          <button type="button" class="btn btn-primary" style="margin-top: 10px; border-radius: 8px;">Save Changes</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+    <style>
+    @media (max-width: 768px) {
+      .dashboard-menu-btn { display: block !important; margin-left: 20px; }
+      .sidebar { z-index: 9999 !important; transition: left 0.3s ease; }
+      .sidebar.open { left: 0 !important; }
+    }
+  </style>
+  <script>
+    const dashMenuBtn = document.querySelector('.dashboard-menu-btn');
+    const sidebar = document.querySelector('.sidebar');
+    if (dashMenuBtn && sidebar) {
+      dashMenuBtn.addEventListener('click', () => {
+        sidebar.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+      const closeBtn = document.querySelector('.sidebar-close-btn');
+      if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+          sidebar.classList.remove('open');
+          document.body.style.overflow = '';
+        });
+      }
+      // Close sidebar when clicking a menu item on mobile
+      document.querySelectorAll('.menu-item[data-target]').forEach(item => {
+        item.addEventListener('click', () => {
+          if (window.innerWidth <= 768) {
+            sidebar.classList.remove('open');
+            const icon = dashMenuBtn.querySelector('i');
+            if (icon) icon.className = 'fa-solid fa-bars';
+            document.body.style.overflow = '';
+          }
+        });
+      });
+    }
+    document.querySelectorAll('.menu-item[data-target]').forEach(item => {
+      item.addEventListener('click', function() {
+        // Remove active from all tabs
+        document.querySelectorAll('.menu-item[data-target]').forEach(tab => tab.classList.remove('active'));
+        document.querySelectorAll('.tab-pane').forEach(pane => pane.style.display = 'none');
+        
+        // Add active to clicked
+        this.classList.add('active');
+        const target = this.getAttribute('data-target');
+        document.getElementById(target).style.display = 'block';
+      });
+    });
+
+    // Dynamic Profile Update from LocalStorage
+    document.addEventListener('DOMContentLoaded', () => {
+      const storedEmail = localStorage.getItem('auth_email');
+      const storedRole = localStorage.getItem('auth_role');
+      const storedName = localStorage.getItem('auth_name');
+
+      if (storedEmail && document.querySelector('.user-profile')) {
+          const avatar = document.querySelector('.profile-avatar');
+          if (avatar) {
+              const displayChar = storedName ? storedName.charAt(0).toUpperCase() : storedEmail.charAt(0).toUpperCase();
+              avatar.innerText = displayChar;
+          }
+          
+          const nameEls = document.querySelectorAll('.user-profile h5');
+          nameEls.forEach(el => {
+              el.innerText = storedName ? (storedName.charAt(0).toUpperCase() + storedName.slice(1)) : 'User';
+          });
+
+          const emailEls = document.querySelectorAll('.user-profile small:nth-of-type(1)');
+          emailEls.forEach(el => { el.innerText = storedEmail; });
+
+          const roleEls = document.querySelectorAll('.user-profile small:nth-of-type(2)');
+          roleEls.forEach(el => {
+              el.innerText = storedRole === 'admin' ? 'Administrator' : 'Patient / Family';
+          });
+      }
+
+      // Global 404 Redirection for unused dashboard elements
+      document.querySelectorAll('a[href="#"], a[href=""], button:not([type="submit"])').forEach(el => {
+        el.addEventListener('click', (e) => {
+          e.preventDefault();
+          window.location.href = '404.html';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+

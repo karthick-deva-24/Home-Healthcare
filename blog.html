@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog - Thatha</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- 1: Header -->
+  <header>
+    <div class="container navbar">
+      <a href="index.html" class="logo"><img src="assets/images/logo_0205.webp" alt="Thatha Logo" style="height: 40px; display: block;"></a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="service.html">Services</a>
+        <a href="blog.html" class="active">Blog</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <a href="login.html" class="btn btn-primary">Login</a>
+      </div>
+      <div class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></div>
+    </div>
+  </header>
+
+  <!-- 2: Hero Banner -->
+  <section class="page-banner" style="background: url('https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1200&q=40&fm=webp') center/cover;">
+    <div class="container" data-aos="zoom-in">
+      <h1>Our Blog</h1>
+      <p style="font-size: 20px; margin-top: 15px;">Insights, tips, and stories about senior care.</p>
+    </div>
+  </section>
+
+  <!-- 3: Featured Post -->
+  <section style="background: var(--bg-light);">
+    <div class="container">
+      <div class="section-title"><h2>Featured Article</h2></div>
+      <div style="background: var(--white); border-radius: 20px; overflow: hidden; display: flex; flex-wrap: wrap; box-shadow: 0 10px 30px rgba(0,0,0,0.05);" data-aos="fade-up">
+        <div style="flex: 1; min-width: 300px;">
+          <img src="assets/images/blog1.webp" style="width:100%; height:100%; object-fit:cover;" alt="Featured">
+        </div>
+        <div style="flex: 1; padding: 40px; display: flex; flex-direction: column; justify-content: center; min-width: 300px;">
+          <span style="color: var(--accent-color); font-weight: bold; margin-bottom: 10px;">Health & Wellness</span>
+          <h2 style="font-size: 32px; margin-bottom: 20px;">10 Essential Tips for Preventing Falls in Seniors</h2>
+          <p style="margin-bottom: 30px; font-size: 16px;">Learn practical ways to keep your home safe and secure for our elderly loved ones, reducing the risk of injuries significantly.</p>
+          <a href="blog.html" class="btn btn-primary" style="width: max-content;">Read Full Post</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4: Categories -->
+  <section style="background: var(--white);">
+    <div class="container text-center">
+      <h2 style="text-align:center; margin-bottom: 30px;">Explore Categories</h2>
+      <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;" data-aos="fade-up">
+        <a href="blog.html" style="padding: 10px 25px; border-radius: 50px; background: var(--bg-light); border: 1px solid var(--border-color); color: var(--primary-color);">All Topics</a>
+        <a href="blog.html" style="padding: 10px 25px; border-radius: 50px; background: var(--primary-color); color: var(--white);">Senior Diet</a>
+        <a href="blog.html" style="padding: 10px 25px; border-radius: 50px; background: var(--bg-light); border: 1px solid var(--border-color); color: var(--primary-color);">Mental Health</a>
+        <a href="blog.html" style="padding: 10px 25px; border-radius: 50px; background: var(--bg-light); border: 1px solid var(--border-color); color: var(--primary-color);">Physical Therapy</a>
+        <a href="blog.html" style="padding: 10px 25px; border-radius: 50px; background: var(--bg-light); border: 1px solid var(--border-color); color: var(--primary-color);">Caregiving</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5: Recent Posts Grid -->
+  <section style="background: var(--bg-light);">
+    <div class="container">
+      <div class="section-title">
+        <h2>Recent Articles</h2>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+        <div class="hover-3d" style="background: var(--white); border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05);" data-aos="fade-up" data-aos-delay="0">
+          <img src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&w=400&q=40&fm=webp" alt="Understanding Alzheimer's Early Signs" style="width: 100%; height: 220px; object-fit: cover;">
+          <div style="padding: 20px;">
+            <p style="color:var(--text-light); font-size: 14px; margin-bottom: 5px;">July 15, 2026</p>
+            <h3>Understanding Alzheimer's Early Signs</h3>
+            <a href="blog.html" style="color: var(--primary-color); font-weight: bold; margin-top: 15px; display: inline-block;">Read More</a>
+          </div>
+        </div>
+        <div class="hover-3d" style="background: var(--white); border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05);" data-aos="fade-up" data-aos-delay="100">
+          <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=400&q=40&fm=webp" alt="Benefits of Gentle Yoga for Mobility" style="width: 100%; height: 220px; object-fit: cover;">
+          <div style="padding: 20px;">
+            <p style="color:var(--text-light); font-size: 14px; margin-bottom: 5px;">July 10, 2026</p>
+            <h3>Benefits of Gentle Yoga for Mobility</h3>
+            <a href="blog.html" style="color: var(--primary-color); font-weight: bold; margin-top: 15px; display: inline-block;">Read More</a>
+          </div>
+        </div>
+        <div class="hover-3d" style="background: var(--white); border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05);" data-aos="fade-up" data-aos-delay="200">
+          <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=400&q=40&fm=webp" alt="How to Manage Caregiver Burnout" style="width: 100%; height: 220px; object-fit: cover;">
+          <div style="padding: 20px;">
+            <p style="color:var(--text-light); font-size: 14px; margin-bottom: 5px;">July 02, 2026</p>
+            <h3>How to Manage Caregiver Burnout</h3>
+            <a href="blog.html" style="color: var(--primary-color); font-weight: bold; margin-top: 15px; display: inline-block;">Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 7: Footer -->
+  <!-- Newsletter Signup -->
+  <section style="background: var(--bg-light); padding: 80px 0; text-align: center;">
+    <div class="container gsap-reveal">
+      <div class="section-title">
+        <h2>Join Our Community</h2>
+      </div>
+      <div style="max-width: 600px; margin: 0 auto;">
+        <i class="fa-regular fa-envelope-open" style="font-size: 48px; color: var(--accent-color); margin-bottom: 20px;"></i>
+        <h3 style="font-size: 26px; color: var(--secondary-color); margin-bottom: 15px;">Subscribe to Our Newsletter</h3>
+        <p style="color: var(--text-light); margin-bottom: 30px;">Stay updated with the latest health tips, medical advice, and Thatha community news.</p>
+        <form style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+          <input type="email" placeholder="Enter your email address" style="padding: 15px 20px; border-radius: 50px; border: 1px solid var(--border-color); width: 100%; max-width: 300px; outline: none; font-family: var(--font-body);">
+          <button type="button" class="btn btn-primary" style="padding: 15px 30px;">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="footer-logo" style="display: block; margin-bottom: 20px;"><img src="assets/images/logo_0205.webp" alt="Thatha Logo" style="height: 50px;"></a>
+        <p style="margin-bottom: 20px;">Providing compassionate and professional home care services designed to enhance the quality of life for seniors and their families.</p>
+        <div style="display:flex; gap:15px; font-size: 20px;">
+          <a href="https://facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+          <a href="https://twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+          <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="service.html">Services</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="service.html">In-Home Care</a></li>
+          <li><a href="service.html">Memory Care</a></li>
+          <li><a href="service.html">Nursing Services</a></li>
+          <li><a href="service.html">Mobility Support</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Contact Info</h3>
+        <p><i class="fa-solid fa-location-dot" style="width:20px;"></i> MMR Complex, Chinna Thirupathi, near Chinna Muniyappan Kovil, Salem, Tamil Nadu 636008</p>
+        <p style="margin: 10px 0;"><i class="fa-solid fa-phone" style="width:20px;"></i> 9876543210</p>
+        <p><i class="fa-solid fa-envelope" style="width:20px;"></i> info@stackly.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Thatha Home Care. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
+
+
+
+

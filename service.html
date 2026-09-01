@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services - Thatha</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- 1: Header -->
+  <header>
+    <div class="container navbar">
+      <a href="index.html" class="logo"><img src="assets/images/logo_0205.webp" alt="Thatha Logo" style="height: 40px; display: block;"></a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="service.html" class="active">Services</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <a href="login.html" class="btn btn-primary">Login</a>
+      </div>
+      <div class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></div>
+    </div>
+  </header>
+
+  <!-- 2: Hero Banner -->
+  <section class="page-banner" style="background: url('https://images.unsplash.com/photo-1551601651-2a8555f1a136?auto=format&fit=crop&w=1200&q=40&fm=webp') center/cover;">
+    <div class="container" data-aos="fade-up">
+      <h1>Our Services</h1>
+      <p style="font-size: 20px; margin-top: 15px;">Comprehensive and personalized care tailored to your needs.</p>
+    </div>
+  </section>
+
+  <!-- 3: Main Services Grid -->
+  <section style="background: var(--bg-light);">
+    <div class="container">
+      <div class="section-title">
+        <h2>What We Offer</h2>
+        <p>Premium home care and medical assistance for your peace of mind.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;">
+        <div class="hover-3d" style="background: var(--white); padding: 30px; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05);" data-aos="fade-up" data-aos-delay="0">
+          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=400&q=40&fm=webp" alt="In-home Care" style="border-radius: 15px; margin-bottom: 20px;">
+          <h3>In-Home Care</h3>
+          <p>Assistance with daily living activities, ensuring safety and comfort at home.</p>
+        </div>
+        <div class="hover-3d" style="background: var(--white); padding: 30px; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05);" data-aos="fade-up" data-aos-delay="100">
+          <img src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?auto=format&fit=crop&w=400&q=40&fm=webp" alt="Nursing" style="border-radius: 15px; margin-bottom: 20px;">
+          <h3>Skilled Nursing</h3>
+          <p>Professional medical care administered by licensed nurses.</p>
+        </div>
+        <div class="hover-3d" style="background: var(--white); padding: 30px; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05);" data-aos="fade-up" data-aos-delay="200">
+          <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=400&q=40&fm=webp" alt="Memory" style="border-radius: 15px; margin-bottom: 20px;">
+          <h3>Memory Care</h3>
+          <p>Specialized support for individuals dealing with memory loss conditions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4: Process -->
+  <section style="background: var(--white);">
+    <div class="container">
+      <div class="section-title gsap-reveal">
+        <h2>How It Works</h2>
+        <p>Simple 3-step process to get started.</p>
+      </div>
+      <div class="about-grid">
+        <div class="hover-3d gsap-reveal">
+          <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=800&q=40&fm=webp" alt="Process" style="border-radius: 15px;">
+        </div>
+        <div>
+          <div data-aos="fade-left" data-aos-delay="0" style="margin-bottom: 30px; display: flex; gap: 20px;">
+            <div style="width: 50px; height: 50px; background: var(--primary-color); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: bold;">1</div>
+            <div>
+              <h3>Initial Consultation</h3>
+              <p>We discuss your specific needs and evaluate the living environment.</p>
+            </div>
+          </div>
+          <div data-aos="fade-left" data-aos-delay="100" style="margin-bottom: 30px; display: flex; gap: 20px;">
+            <div style="width: 50px; height: 50px; background: var(--primary-color); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: bold;">2</div>
+            <div>
+              <h3>Custom Care Plan</h3>
+              <p>Our experts design a personalized care regimen tailored to the patient.</p>
+            </div>
+          </div>
+          <div data-aos="fade-left" data-aos-delay="200" style="display: flex; gap: 20px;">
+            <div style="width: 50px; height: 50px; background: var(--primary-color); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: bold;">3</div>
+            <div>
+              <h3>Begin Care</h3>
+              <p>Matched caregivers arrive to provide compassionate and professional assistance.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5: Pricing info (Mockup) -->
+  <section style="background: var(--primary-color); color: var(--white);">
+    <div class="container text-center" data-aos="zoom-in">
+      <h2 style="color: var(--white); text-align: center;">Transparent Plans</h2>
+      <p style="text-align: center; max-width: 600px; margin: 0 auto 40px;">No hidden fees. We work with various insurance providers to help ease the financial burden.</p>
+      <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+        <div style="background: var(--white); color: var(--text-dark); padding: 40px; border-radius: 20px; width: 300px; text-align: center;">
+          <h3>Basic Care</h3>
+          <h2 style="font-size: 40px;">$29<span style="font-size: 16px;">/hr</span></h2>
+          <ul style="text-align: left; margin: 20px 0; line-height: 2;">
+            <li>Companion care</li>
+            <li>Light housekeeping</li>
+            <li>Meal prep</li>
+          </ul>
+          <a href="contact.html" class="btn btn-outline" style="width: 100%;">Select Plan</a>
+        </div>
+        <div style="background: var(--white); color: var(--text-dark); padding: 40px; border-radius: 20px; width: 300px; text-align: center; border: 4px solid var(--accent-color); transform: scale(1.05);">
+          <h3>Premium Care</h3>
+          <h2 style="font-size: 40px;">$49<span style="font-size: 16px;">/hr</span></h2>
+          <ul style="text-align: left; margin: 20px 0; line-height: 2;">
+            <li>24/7 Nursing</li>
+            <li>Medical tracking</li>
+            <li>Therapy sessions</li>
+          </ul>
+          <a href="contact.html" class="btn btn-primary" style="width: 100%; background: var(--accent-color); color: var(--text-dark);">Select Plan</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6: FAQ -->
+  <section style="background: var(--white);">
+    <div class="container">
+      <div class="section-title">
+        <h2>Frequently Asked Questions</h2>
+      </div>
+      <div style="max-width: 800px; margin: 0 auto;">
+        <div style="margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 20px;" data-aos="fade-up">
+          <h3>Are your caregivers certified?</h3>
+          <p>Yes, all our caregivers are licensed professionals with complete background checks.</p>
+        </div>
+        <div style="margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 20px;" data-aos="fade-up">
+          <h3>Do you offer 24/7 services?</h3>
+          <p>We provide both part-time and round-the-clock live-in care arrangements.</p>
+        </div>
+        <div data-aos="fade-up">
+          <h3>Is my insurance accepted?</h3>
+          <p>We work with most major insurance providers including Medicare supplements. Contact us to verify.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7: Footer -->
+  <!-- Guarantee section -->
+  <section style="background: #fff4e5; padding: 80px 0;">
+    <div class="container" style="display: flex; flex-direction: column; align-items: center; text-align: center;" data-aos="fade-up">
+      <div class="section-title" style="margin-bottom: 30px;">
+        <h2>Our Promise</h2>
+      </div>
+      <div style="display: inline-flex; align-items: center; text-align: left; gap: 20px; background: var(--white); padding: 30px 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); max-width: 650px;">
+        <i class="fa-solid fa-shield-cat" style="font-size: 50px; color: var(--accent-color);"></i>
+        <div>
+          <h3 style="margin-bottom: 5px; color: var(--secondary-color);">Our 100% Satisfaction Guarantee</h3>
+          <p style="margin: 0; color: var(--text-light);">If you aren't completely happy with your care plan, we'll assign a new care specialist within 24 hours.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="footer-logo" style="display: block; margin-bottom: 20px;"><img src="assets/images/logo_0205.webp" alt="Thatha Logo" style="height: 50px;"></a>
+        <p style="margin-bottom: 20px;">Providing compassionate and professional home care services designed to enhance the quality of life for seniors and their families.</p>
+        <div style="display:flex; gap:15px; font-size: 20px;">
+          <a href="https://facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+          <a href="https://twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+          <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="service.html">Services</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="service.html">In-Home Care</a></li>
+          <li><a href="service.html">Memory Care</a></li>
+          <li><a href="service.html">Nursing Services</a></li>
+          <li><a href="service.html">Mobility Support</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Contact Info</h3>
+        <p><i class="fa-solid fa-location-dot" style="width:20px;"></i> MMR Complex, Chinna Thirupathi, near Chinna Muniyappan Kovil, Salem, Tamil Nadu 636008</p>
+        <p style="margin: 10px 0;"><i class="fa-solid fa-phone" style="width:20px;"></i> 9876543210</p>
+        <p><i class="fa-solid fa-envelope" style="width:20px;"></i> info@stackly.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Thatha Home Care. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
+
+
+
+

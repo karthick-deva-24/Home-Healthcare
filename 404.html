@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Page Not Found</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #0b566d;
+      --secondary-color: #22333b;
+      --accent-color: #fca311;
+      --bg-light: #f6fcff;
+      --white: #ffffff;
+      --text-light: #6a7b82;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg-light);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      color: var(--secondary-color);
+    }
+    
+    .error-container {
+      text-align: center;
+      position: relative;
+      z-index: 10;
+      padding: 0 20px;
+    }
+    
+    /* EKG Flatline Animation Container */
+    .ekg-wrapper {
+      width: 100%;
+      max-width: 500px;
+      height: 120px;
+      margin: 0 auto 30px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .ekg-line {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 200%;
+      height: 4px;
+      background: rgba(11, 86, 109, 0.2);
+    }
+    
+    .ekg-pulse {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 120"><path d="M0,60 L150,60 L170,20 L210,100 L240,40 L260,60 L500,60" fill="none" stroke="%23fca311" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+      background-repeat: repeat-x;
+      background-size: 500px 120px;
+      animation: heartbeat 3s linear infinite;
+    }
+    
+    @keyframes heartbeat {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-500px); }
+    }
+    
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 140px;
+      line-height: 1;
+      margin-bottom: 10px;
+      color: var(--primary-color);
+      text-shadow: 0 10px 30px rgba(11, 86, 109, 0.1);
+    }
+    
+    h2 {
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    
+    p {
+      color: var(--text-light);
+      font-size: 18px;
+      max-width: 450px;
+      margin: 0 auto 40px;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--primary-color);
+      color: var(--white);
+      padding: 15px 40px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 18px;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 20px rgba(11, 86, 109, 0.2);
+    }
+    
+    .btn:hover {
+      background: var(--accent-color);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 25px rgba(252, 163, 17, 0.3);
+    }
+    
+    /* Floating Particles */
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--primary-color);
+      opacity: 0.1;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .p1 { width: 40px; height: 40px; top: 10%; left: 20%; animation-delay: 0s; }
+    .p2 { width: 80px; height: 80px; top: 70%; left: 10%; animation-delay: 1s; background: var(--accent-color); opacity: 0.05; }
+    .p3 { width: 30px; height: 30px; top: 20%; right: 20%; animation-delay: 2.5s; }
+    .p4 { width: 60px; height: 60px; bottom: 15%; right: 15%; animation-delay: 0.5s; }
+    .p5 { width: 120px; height: 120px; top: -5%; right: -5%; opacity: 0.03; animation-delay: 3s; }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      50% { transform: translateY(-30px) rotate(10deg); }
+    }
+    
+    @media (max-width: 768px) {
+      h1 { font-size: 100px; }
+      h2 { font-size: 24px; }
+      p { font-size: 16px; }
+      .ekg-wrapper { height: 80px; max-width: 300px; }
+      .ekg-pulse { background-size: 300px 80px; animation: heartbeat-mobile 2s linear infinite; }
+    }
+    @keyframes heartbeat-mobile {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-300px); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Background Particles -->
+  <div class="particle p1"></div>
+  <div class="particle p2"></div>
+  <div class="particle p3"></div>
+  <div class="particle p4"></div>
+  <div class="particle p5"></div>
+
+  <div class="error-container">
+    <!-- Heartbeat Animation -->
+    <div class="ekg-wrapper">
+      <div class="ekg-line"></div>
+      <div class="ekg-pulse"></div>
+    </div>
+    
+    <h1>404</h1>
+    <h2>Signal Lost</h2>
+    <p>We couldn't locate the page you're looking for. The link may be broken, or the page has been moved.</p>
+    
+    <div class="button-group" style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+      <a href="javascript:window.history.back()" class="btn" style="background: transparent; color: var(--primary-color); border: 2px solid var(--primary-color);">
+        <i class="fa-solid fa-arrow-left"></i> Go Back
+      </a>
+      <a href="index.html" class="btn">
+        <i class="fa-solid fa-house-medical"></i> Back to Home
+      </a>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script>
+    gsap.from("h1", { opacity: 0, y: 50, duration: 1, ease: "back.out(1.7)" });
+    gsap.from("h2", { opacity: 0, y: 30, duration: 1, delay: 0.2, ease: "power3.out" });
+    gsap.from("p", { opacity: 0, y: 30, duration: 1, delay: 0.4, ease: "power3.out" });
+    gsap.fromTo(".button-group", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1, delay: 0.6, ease: "back.out(1.5)" });
+    gsap.from(".ekg-wrapper", { opacity: 0, scaleX: 0, transformOrigin: "left", duration: 1.5, delay: 0.8, ease: "power3.inOut" });
+  </script>
+</body>
+</html>
