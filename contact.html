@@ -57,15 +57,15 @@
 
       <div class="hover-3d" style="background: var(--white); padding: 50px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);" data-aos="fade-left">
         <h2 style="margin-bottom: 30px;">Send a Message</h2>
-        <form style="display: grid; gap: 20px;">
+        <form action="404.html" style="display: grid; gap: 20px;">
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-            <input type="text" placeholder="First Name" style="padding: 15px; border-radius: 10px; border: 1px solid var(--border-color); outline: none;">
-            <input type="text" placeholder="Last Name" style="padding: 15px; border-radius: 10px; border: 1px solid var(--border-color); outline: none;">
+            <input type="text" placeholder="First Name" required style="padding: 15px; border-radius: 10px; border: 1px solid var(--border-color); outline: none;">
+            <input type="text" placeholder="Last Name" required style="padding: 15px; border-radius: 10px; border: 1px solid var(--border-color); outline: none;">
           </div>
-          <input type="email" placeholder="Email Address" style="padding: 15px; border-radius: 10px; border: 1px solid var(--border-color); outline: none;">
-          <input type="text" placeholder="Subject regarding..." style="padding: 15px; border-radius: 10px; border: 1px solid var(--border-color); outline: none;">
-          <textarea rows="5" placeholder="How can we help?" style="padding: 15px; border-radius: 10px; border: 1px solid var(--border-color); outline: none; resize: none;"></textarea>
-          <button class="btn btn-primary" type="button" style="width: 100%;">Submit Inquiry</button>
+          <input type="email" placeholder="Email Address" required style="padding: 15px; border-radius: 10px; border: 1px solid var(--border-color); outline: none;">
+          <input type="text" placeholder="Subject regarding..." required style="padding: 15px; border-radius: 10px; border: 1px solid var(--border-color); outline: none;">
+          <textarea rows="5" placeholder="How can we help?" required style="padding: 15px; border-radius: 10px; border: 1px solid var(--border-color); outline: none; resize: none;"></textarea>
+          <button class="btn btn-primary" type="submit" style="width: 100%;">Submit Inquiry</button>
         </form>
       </div>
     </div>
